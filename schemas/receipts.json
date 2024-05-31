@@ -1,0 +1,64 @@
+{
+    "$jsonSchema": {
+        "bsonType": "object",
+        "title": "Shop Receipts",
+        "required": ["reference", "date", "totalAmount", "products", "customer"],
+        "properties": {
+            "reference": {
+                "bsonType": "string",
+                "description": "'reference' must be a string and is required"
+            },
+            "date": {
+                "bsonType": "date",
+                "description": "'date' must be a date and is required"
+            },
+            "totalAmount": {
+                "bsonType": "number",
+                "description": "'totalAmount' must be a double and is required",
+                "minimum": 0
+            },
+            "products": {
+                "bsonType": "array",
+                "description": "'products' must be an array and is required",
+                "items": {
+                    "bsonType": "object",
+                    "required": ["productId", "size", "quantity"],
+                    "properties": {
+                        "productId": {
+                            "bsonType": "objectId",
+                            "description": "'product' must be an objectId and is required"
+                        },
+                        "size": {
+                            "bsonType": "string",
+                            "description": "'size' must be a string"
+                        },
+                        "quantity": {
+                            "bsonType": "number",
+                            "description": "'quantity' must be a number and is required",
+                            "minimum": 1
+                        }
+                    }
+                }
+            },
+            "customer": {
+                "bsonType": "object",
+                "description": "'customer' must be an object and is required",
+                "required": ["name"],
+                "properties": {
+                    "name": {
+                        "bsonType": "string",
+                        "description": "'name' must be a string and is required"
+                    },
+                    "email": {
+                        "bsonType": "string",
+                        "description": "'email' must be a string"
+                    },
+                    "phone": {
+                        "bsonType": "string",
+                        "description": "'phone' must be a string"
+                    }
+                }
+            }
+        }
+    }
+}
